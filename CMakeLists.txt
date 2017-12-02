@@ -7,3 +7,5 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(aoc-01 01.cpp)
+add_executable(aoc-02 02.cpp)
+
