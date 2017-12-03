@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options(-Wall -Wextra)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
 
-foreach(day RANGE 1 2)
+foreach(day RANGE 1 3)
   if(day MATCHES "^.$")
     set(day "0${day}")
   endif()
