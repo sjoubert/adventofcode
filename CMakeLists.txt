@@ -5,13 +5,17 @@ project(adventofcode LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-add_compile_options(-Wall -Wextra)
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin)
+
+include(CheckCXXCompilerFlag)
+set(unix_compile_options -Wall -Wextra -Wno-sign-compare)
+check_cxx_compiler_flag("${unix_compile_options}" HAVE_UNIX_FLAGS)
 
 foreach(day RANGE 1 5)
   if(day MATCHES "^.$")
     set(day "0${day}")
   endif()
   add_executable(aoc-${day} ${day}.cpp)
+  target_compile_options(aoc-${day} PRIVATE ${unix_compile_options})
 endforeach()
-
