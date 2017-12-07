@@ -16,7 +16,7 @@ void ComputeTowerWeight(std::map<std::string, int>& p_towerWeight,
       std::map<int, std::string> weightNames;
       for (auto const& flyingName: p_data.at(p_base).second)
       {
-                ComputeTowerWeight(p_towerWeight, p_data, flyingName);
+        ComputeTowerWeight(p_towerWeight, p_data, flyingName);
         p_towerWeight[p_base] += p_towerWeight[flyingName];
         weights.push_back(p_towerWeight[flyingName]);
         weightNames[weights.back()] = flyingName;
