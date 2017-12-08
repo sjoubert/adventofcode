@@ -14,7 +14,7 @@ check_cxx_compiler_flag("${unix_compile_options}" HAVE_UNIX_FLAGS)
 
 include(CTest)
 
-foreach(day RANGE 1 7)
+foreach(day RANGE 1 8)
   if(day MATCHES "^.$")
     set(day "0${day}")
   endif()
