@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.13)
 
 project(adventofcode LANGUAGES CXX)
 
@@ -14,18 +14,14 @@ check_cxx_compiler_flag("${unix_compile_options}" HAVE_UNIX_FLAGS)
 
 include(CTest)
 
-set(days_2017 12)
-set(days_2018 3)
+file(GLOB_RECURSE challenges RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "[0-9][0-9].cpp" )
+foreach(challenge IN LISTS challenges)
+  string(REGEX MATCH "(.+)/(.+).cpp" matchResult ${challenge})
+  set(year ${CMAKE_MATCH_1})
+  set(day ${CMAKE_MATCH_2})
 
-foreach(year RANGE 2017 2018)
-  foreach(day RANGE 1 ${days_${year}})
-    if(day MATCHES "^.$")
-      set(day "0${day}")
-    endif()
+  add_executable(aoc-${year}-${day} ${year}/${day}.cpp)
+  target_compile_options(aoc-${year}-${day} PRIVATE ${unix_compile_options})
 
-    add_executable(aoc-${year}-${day} ${year}/${day}.cpp)
-    target_compile_options(aoc-${year}-${day} PRIVATE ${unix_compile_options})
-
-    add_test(NAME aoc-${year}-${day} COMMAND aoc-${year}-${day})
-  endforeach()
+  add_test(NAME aoc-${year}-${day} COMMAND aoc-${year}-${day})
 endforeach()
