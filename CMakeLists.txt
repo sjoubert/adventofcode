@@ -15,7 +15,7 @@ check_cxx_compiler_flag("${unix_compile_options}" HAVE_UNIX_FLAGS)
 include(CTest)
 
 set(days_2017 12)
-set(days_2018 2)
+set(days_2018 3)
 
 foreach(year RANGE 2017 2018)
   foreach(day RANGE 1 ${days_${year}})
